@@ -23,12 +23,10 @@ def shou_lesson():
         d_time_end = datetime.datetime.strptime(str(datetime.datetime.now().date()) + end_time, '%Y-%m-%d%H:%M')
         if n_time > d_time_start and n_time < d_time_end:
             color = 'red'
-            var2.set('状态:上课')
         else:
             color ='blue'
-            var2.set('状态:下课')
         print(lesson[weekday[weekday_num]][i]['name'])
-        tk.Label(root, text=lesson['星期四'][i]['name'], fg=color, font=("微软雅黑", 10)).grid(row=0,column=int(i) + 2)
+        tk.Label(root, text=lesson[weekday[weekday_num]][i]['name'], fg=color, font=("微软雅黑", 10)).grid(row=0,column=int(i) + 1)
         print(int(i)+1)
     root.after(60000, shou_lesson)
 #获取时间
@@ -65,12 +63,10 @@ def OnMotion(event):
 root = tk.Tk()
 # 设置窗口标题
 root.title('test')
-root.geometry('450x25')
+root.geometry('400x25')
 # 创建Label对象，第一个参数指定该Label放入root
 var = tk.StringVar()
-var2 = tk.StringVar()
 w = tk.Label(root, text="Hello Python!", textvariable=var, fg='blue', font=("微软雅黑", 10))
-q = tk.Label(root, text="Hello Python!", textvariable=var2, fg='blue', font=("微软雅黑", 10))
 update_text()
 
 
@@ -88,7 +84,6 @@ root.bind("<B1-Motion>", OnMotion)  # 监听鼠标移动操作响应函数
 # 测试用途
 # 调用pack进行布局
 w.grid(row=0,column=0)
-q.grid(row=0,column=1)
 
 
 
